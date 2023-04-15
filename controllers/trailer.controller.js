@@ -23,12 +23,10 @@ export const createTrailer = async (req, res, next) => {
 export const updateTrailer = (req, res, next) => {
   const { titulo, year, director, actores, reseña, cover, link } = req.body;
   try {
-    const { id } = req.params;
-    Trailer.findByIdAndUpdate(id, {
-      ...req.body,
-    })
+    const { id } = req.query;
+    Trailer.updateOne({ _id: id }, { ...req.body })
       .then((trailer) => {
-        res.status(200).json(trailer);
+        res.status(200).json("updated");
       })
       .catch((error) => {
         res.status(400).json(error);
@@ -55,7 +53,6 @@ export const getTrailers = (req, res, next) => {
 export const deleteTrailer = (req, res, next) => {
   try {
     const { id } = req.query;
-    console.log(req.params.id);
     Trailer.findByIdAndDelete(id)
       .then((trailer) => {
         res.status(200).json(trailer);
