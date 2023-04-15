@@ -23,7 +23,7 @@ export const createTrailer = async (req, res, next) => {
 export const updateTrailer = (req, res, next) => {
   const { titulo, year, director, actores, reseña, cover, link } = req.body;
   try {
-    const { id } = req.query;
+    const { id } = req.params;
     Trailer.findByIdAndUpdate(id, {
       ...req.body,
     })
