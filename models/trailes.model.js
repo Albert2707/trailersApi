@@ -2,7 +2,11 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 const trailerSchema = new Schema(
   {
-
+    id: {
+      type: String,
+      required: true,
+      unique: true,
+    },
 
     titulo: {
       type: String,

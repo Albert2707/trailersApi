@@ -1,8 +1,10 @@
 import Trailer from "../models/trailes.model.js";
+import { v4 as uuid4 } from "uuid";
 export const createTrailer = async (req, res, next) => {
   try {
     const newTrailer = Trailer({
       ...req.body,
+      id: uuid4(),
     });
     await newTrailer.save(newTrailer);
     newTrailer
@@ -40,8 +42,7 @@ export const getTrailers = (req, res, next) => {
   try {
     Trailer.find()
       .then((trailers) => {
-        const {_id:id, ...info} = trailers;
-        res.status(200).json(info);
+        res.status(200).json(trailers);
       })
       .catch((error) => {
         res.status(400).json(error);
