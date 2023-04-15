@@ -71,8 +71,8 @@ export const deleteTrailer = (req, res, next) => {
 
 export const getOneTrailer = (req, res) => {
   try {
-    const { id } = req.params;
-    Trailer.findById(id)
+    const { titulo } = req.params;
+    Trailer.find(titulo)
       .then((trailer) => {
         res.status(200).json(trailer);
         console.log("trailer found");
