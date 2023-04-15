@@ -9,7 +9,7 @@ import {
 
 const router = Router();
 router.get("/", getTrailers);
-router.get("/:id", getOneTrailer);
+router.get("/:titulo", getOneTrailer);
 router.post("/create", createTrailer);
 router.put("/update", updateTrailer);
 router.delete("/delete", deleteTrailer);

@@ -21,7 +21,7 @@ export const createTrailer = async (req, res, next) => {
 };
 
 export const updateTrailer = (req, res, next) => {
-  const { titulo, year, director, actores, reseña, cover, link } = req.body;
+  console.log(req.body)
   try {
     const { id } = req.query;
     Trailer.updateOne({ _id: id }, { ...req.body })
@@ -69,10 +69,9 @@ export const deleteTrailer = (req, res, next) => {
 export const getOneTrailer = (req, res) => {
   try {
     const { titulo } = req.params;
-    Trailer.find(titulo)
+    Trailer.findOne({titulo})
       .then((trailer) => {
         res.status(200).json(trailer);
-        console.log("trailer found");
       })
       .catch((error) => {
         res.status(400).json(error);
