@@ -37,7 +37,7 @@ const trailerSchema = new Schema(
       type: String,
       required: true,
     },
-        desc: {
+      desc: {
       type: String,
       required: false,
     },
