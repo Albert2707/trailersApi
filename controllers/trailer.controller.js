@@ -21,7 +21,6 @@ export const createTrailer = async (req, res, next) => {
 };
 
 export const updateTrailer = (req, res, next) => {
-  console.log(req.body)
   try {
     const { id } = req.query;
     Trailer.updateOne({ _id: id }, { ...req.body })
